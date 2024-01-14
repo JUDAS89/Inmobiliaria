@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafío - Inmobiliaria</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"/>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand" href="#">Inmobiliaria ADL</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="./propiedades_venta.html">En venta</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./propiedades_alquiler.html">Alquiler</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container-fluid main-section">
+      <h1 class="text-white">Encuentra tu nueva propiedad</h1>
+    </main>
+    <div class="container mt-5">
+      <!-- Propiedades en venta -->
+      <section id="venta">
+        <h2>Propiedades en venta</h2>
+        <div class="row" id="pventa">
+          <script>
+            const propiedadesVentaCard=document.querySelector("#pventa")
+
+            const propiedadesVenta=[
+              {
+                name:'Apartamento de lujo en zona exclusiva',
+                src: "https://fotos.perfil.com/2018/09/21/trim/950/534/nueva-york-09212018-366965.jpg",
+                description: 'Este apartamento de lujo está ubicado en una exclusiva zona residencial',
+                adress: '123 Luxury Lane, Prestige Suburb, CA 45678',
+                bedrooms: 4,
+                bathrooms: 4,
+                cost: 5000,  
+                smoke: false,
+                pets: false
+              },
+              {
+                name:'Apartamento acogedor en la montaña',
+                src: "https://cdn.bioguia.com/embed/3d0fb0142790e6b90664042cbafcb1581427139/furgoneta.jpg",
+                description: 'Este apartamento acogedor está situado en lo alto de una montaña con impresionantes vistas',
+                adress: '789 Mountain Road, Summit Peaks, CA 23456',
+                bedrooms: 2,
+                bathrooms: 1,
+                cost: 1200,  
+                smoke: true,
+                pets: true
+              },
+              {
+                name:'Penthouse de lujo con terraza panorámica',
+                src: "https://resizer.glanacion.com/resizer/fhK-tSVag_8UGJjPMgWrspslPoU=/768x0/filters:quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/CUXVMXQE4JD5XIXX4X3PDZAVMY.jpg",
+                description: 'Este penthouse de lujo ofrece una terraza panorámica con vistas espectaculares',
+                adress: '567 Skyline Avenue, Skyview City, CA 56789',
+                bedrooms: 3,
+                bathrooms: 3,
+                cost: 4500,  
+                smoke: false,
+                pets: true
+              },
+              {
+                name:'Apartamento exclusivo en la playa',
+                src: "https://images.unsplash.com/photo-1669071192880-0a94316e6e09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: 'Apartamento en zona apartada con vista y acceso envidiable a playa cristalina',
+                adress: '958 Beach lane, Concon City, CA 565656',
+                bedrooms: 2,
+                bathrooms: 3,
+                cost: 3000,  
+                smoke: true,
+                pets: false
+              }
+            ]
+
+            for (let propiedad of propiedadesVenta.slice(0,3)) {
+              const template =`
+                  <div class="col-md-4 mb-4">
+                      <div class="card">
+                          <img src=${propiedad.src} class="card-img-top" alt="Imagen del departamento"/>
+                          <div class="card-body">
+                              <h5 class="card-title">${propiedad.name}</h5>
+                              <p class="card-text">${propiedad.description}</p>
+                              <p><i class="fas fa-map-marker-alt"></i> ${propiedad.adress}</p>
+                              <p>
+                                  <i class="fas fa-bed"></i> ${propiedad.bedrooms} Habitaciones |
+                                  <i class="fas fa-bath"></i>  ${propiedad.bathrooms} Baños
+                              </p>
+                              <p><i class="fas fa-dollar-sign"></i> ${propiedad.cost}</p>
+                                  <p class="text-danger">
+                                  <i class="fas fa-smoking-ban"></i> No se permite fumar
+                              </p>
+                              <p class="${propiedad.pets? 'text-success' : 'text-danger'}">
+                                  <i class="fas ${propiedad.pets? 'fa-paw' : 'fa-ban'}"></i>
+                                  ${propiedad.smoke? 'Mascotas permitidas' : 'No se permiten mascotas'}
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              `
+              
+              propiedadesVentaCard.innerHTML+=template
+          }
+          </script>
+
+        </div>
+        <a href="./propiedades_venta.html" class="btn btn-dark">Ver todas las propiedades en venta</a>
+      </section>
+      <hr>
+      <!-- Propiedades en alquiler -->
+      <section id="alquiler" class="mb-5">
+        <h2>Propiedades en alquiler</h2>
+        <div class="row" id="palquiler">
+          <script>
+            const propiedadesAlquilerCard=document.querySelector("#palquiler")
+
+            const propiedadesAlquiler=[
+              {
+                name:'Apartamento en el centro de la ciudad',
+                src: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
+                description: 'Este apartamento de 2 habitaciones está ubicado en el corazón de la ciudad, cerca de todo.',
+                adress: '123 Main Street, Anytown, CA 91234',
+                bedrooms: 2,
+                bathrooms: 2,
+                cost: 2000,  
+                smoke: false,
+                pets: true
+              },
+              {
+                name:'Apartamento luminoso con vista al mar',
+                src: "https://images.unsplash.com/photo-1669071192880-0a94316e6e09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: 'Este hermoso apartamento ofrece una vista impresionante al mar',
+                adress: '456 Ocean Avenue, Seaside Town, CA 56789',
+                bedrooms: 3,
+                bathrooms: 3,
+                cost: 2500,  
+                smoke: true,
+                pets: true
+              },
+              {
+                name:'Condominio moderno en zona residencial',
+                src: "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbmRvfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=60",
+                description: 'Este elegante condominio moderno está ubicado en una tranquila zona residencial',
+                adress: '123 Main Street, Anytown, CA 91234',
+                bedrooms: 2,
+                bathrooms: 2,
+                cost: 2200,  
+                smoke: false,
+                pets: false
+              },
+              {
+                name:'Casa Rural en medio del bosque',
+                src: "https://cdn.bioguia.com/embed/3d0fb0142790e6b90664042cbafcb1581427139/furgoneta.jpg",
+                description: 'Casa rural instalada en medio de verde bosque ideal para apartarse y disfrutar de la naturaleza',
+                adress: '272 Mountain Road, Aniany Peaks, CA 91333',
+                bedrooms: 1,
+                bathrooms: 1,
+                cost: 1000,  
+                smoke: false,
+                pets: true
+              }
+            ]
+
+            for (let propiedad of propiedadesAlquiler.slice(0,3)) {
+              const template =`
+                  <div class="col-md-4 mb-4">
+                      <div class="card">
+                          <img src=${propiedad.src} class="card-img-top" alt="Imagen del departamento"/>
+                          <div class="card-body">
+                              <h5 class="card-title">${propiedad.name}</h5>
+                              <p class="card-text">${propiedad.description}</p>
+                              <p><i class="fas fa-map-marker-alt"></i> ${propiedad.adress}</p>
+                              <p>
+                                  <i class="fas fa-bed"></i> ${propiedad.bedrooms} Habitaciones |
+                                  <i class="fas fa-bath"></i>  ${propiedad.bathrooms} Baños
+                              </p>
+                              <p><i class="fas fa-dollar-sign"></i> ${propiedad.cost}</p>
+                                  <p class="text-danger">
+                                  <i class="fas fa-smoking-ban"></i> No se permite fumar
+                              </p>
+                              <p class="${propiedad.pets? 'text-success' : 'text-danger'}">
+                                  <i class="fas ${propiedad.pets? 'fa-paw' : 'fa-ban'}"></i>
+                                  ${propiedad.smoke? 'Mascotas permitidas' : 'No se permiten mascotas'}
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              `
+              
+              propiedadesAlquilerCard.innerHTML+=template
+          }
+          </script>
+
+        </div>
+        <a href="./propiedades_alquiler.html" class="btn btn-dark">Ver todas las propiedades en alquiler</a>
+      </section>
+    </div>
+    <!-- Font awesome -->
+    <script
+      src="https://kit.fontawesome.com/f5bdbb41e0.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
